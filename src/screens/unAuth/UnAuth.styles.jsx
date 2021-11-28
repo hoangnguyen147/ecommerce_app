@@ -16,8 +16,7 @@ export const MyText = styled(Text)`
     font-size: 20px;
 `
 
-export const BonusWrapper = styled(View)`
-`
+
 
 export const AuthWrapper = styled(ImageBackground)`
     flex: 1;
