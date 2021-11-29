@@ -42,7 +42,7 @@ export const SearchIconWrapper = styled(View)`
 
 export const MainHome = styled(View)`
     flex: 1;
-    background-color: #eee;
+    background-color: ${props => props.theme.colors.bg.secondary};
     border-top-left-radius : 20px;
     border-top-right-radius : 20px;
     padding: 0 20px;
@@ -56,7 +56,7 @@ export const ButtonCat = styled(Text)`
     height: 30px;
     margin: 0 4px;
     border-radius: 999px;
-    color: ${props => props.active  ? "#fff" : "#000"};
+    color: ${props => props.active  ? "#fff" : props.theme.colors.secondary};
     background-color: ${props => props.active  ? props.theme.colors.primary : "transparent"};
 `
 

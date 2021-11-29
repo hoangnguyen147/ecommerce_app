@@ -15,7 +15,7 @@ export const colors = {
   },
   bg: {
     primary: "#0ACF83",
-    secondary: "#F1F1F1",
+    secondary: "#F6F6F6",
   },
   text: {
     primary: "#0ACF83",
@@ -25,5 +25,6 @@ export const colors = {
     error: "#D0421B",
     success: "#138000",
   },
-  primary: "#0ACF83"
+  primary: "#0ACF83",
+  secondary: "#7F7F7F"
 };
