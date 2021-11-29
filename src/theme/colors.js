@@ -14,15 +14,16 @@ export const colors = {
     success: "#138000",
   },
   bg: {
-    primary: "#FFFFFF",
+    primary: "#0ACF83",
     secondary: "#F1F1F1",
   },
   text: {
-    primary: "#262626",
+    primary: "#0ACF83",
     secondary: "#757575",
     disabled: "#9C9C9C",
     inverse: "#FFFFFF",
     error: "#D0421B",
     success: "#138000",
   },
+  primary: "#0ACF83"
 };
