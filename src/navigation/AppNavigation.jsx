@@ -14,6 +14,7 @@ function AppContainer(props) {
         <NavigationContainer>
             <RootNavigation />
         </NavigationContainer>
+        
     );
 }
 

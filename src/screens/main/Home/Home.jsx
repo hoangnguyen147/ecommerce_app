@@ -36,7 +36,7 @@ function Home({ ...props }) {
                 <CategoryList data={data} />
                 <PreviewCategory width={width} />
                 {/* </View> */}
-                {/* <Button title="Đăng xuất" onPress={() => props.logout()} /> */}
+                <Button title="Đăng xuất" onPress={() => props.logout()} />
             </MainHome>
         </SafeArea>
     );

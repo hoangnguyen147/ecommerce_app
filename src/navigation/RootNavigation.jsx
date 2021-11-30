@@ -3,7 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MainScreen from '../screens/main/MainScreen';
 import UnAuthScreen from '../screens/unAuth/UnAuthScreen';
 import { connect } from 'react-redux';
-
+import Signin from '../screens/login/signin'
+import Signup from '../screens/login/signup';
 const RootStack = createStackNavigator();
 
 function RootNavigation({ token, ...props }) {
@@ -38,3 +39,6 @@ const mapDispatchToProps = {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootNavigation);
+
+
+
