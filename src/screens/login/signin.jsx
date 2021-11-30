@@ -1,6 +1,7 @@
+import React, { useState } from 'react'
+import { View,Text, SafeAreaView, TextInput, Button, StyleSheet,KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { fontSizes } from '../../theme/fonts'
 import { Formik } from 'formik'
-import React from 'react'
-import { Button, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import * as Yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -13,8 +14,14 @@ const SignupSchema = Yup.object().shape({
     .required('Trường này là bắt buộc!'),
  });
 
-export default function Signup({navigation}){
+
+export default function Signin({navigation}){
+    const submit=(values)=>{
+        console.log(values)
+        values={}
+    }
     return(
+        <>
         <SafeAreaView style={styles.container}>
             <View style={styles.title}>
                 <Text style={{fontSize:45,fontWeight:'bold'}}>Audio</Text>
@@ -24,7 +31,7 @@ export default function Signup({navigation}){
                     <Formik
                         initialValues={{ email: '',password:''}}
                         validationSchema={SignupSchema}
-                        onSubmit={values=>console.log(values)}
+                        onSubmit={values=>submit(values)}
                         >
                         {({ handleChange, handleBlur, handleSubmit, values,errors,touched}) => (
                         <View style={styles.form}>
@@ -56,30 +63,23 @@ export default function Signup({navigation}){
                                     <Text style={{color:'red'}}>{errors.password}</Text>
                                 ):null}
                             </View>
-                            <View>
-                                <Button  onPress={handleSubmit} title="Sign Up" />
-
+                            <View style={styles.forgotpassword}>
+                                <TouchableOpacity>
+                                    <Text style={styles.forgotpassword_text}>Forgot Password</Text>
+                                </TouchableOpacity>
                             </View>
-                            <View style={styles.icon_action}>
-                                    <TouchableOpacity style={styles.icon}>
-                                        <Text style={{color:'#27ae60'}}>Apple</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.icon}>
-                                        <Text style={{color:'#27ae60'}}>Facebook</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.icon}>
-                                        <Text style={{color:'#27ae60'}}>Google</Text>
-                                    </TouchableOpacity>
+                            <View>
+                                <Button  onPress={handleSubmit} title="Sign In" />
+
                             </View>
                             <View style={styles.footer}>
                                 <Text>
-                                    If you have an account?   
+                                    Didn't have any account?   
                                 </Text>
                                 <TouchableOpacity 
-                                    onPress={()=>navigation.navigate('signin')}
-                                    style={{height:20}}
+                                    onPress={()=>navigation.navigate('signup')}
                                 >
-                                    <Text style={{color:'#27ae60'}}>Sign In here</Text>
+                                    <Text style={{color:'#27ae60'}}>Sign up here</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -87,6 +87,7 @@ export default function Signup({navigation}){
                     </Formik>
                 </KeyboardAwareScrollView>
         </SafeAreaView>
+        </>
     )
 }
 const styles=StyleSheet.create({
@@ -113,20 +114,18 @@ const styles=StyleSheet.create({
         borderColor:'#95a5a6',
         borderWidth:1,
     },
-    icon_action:{
-        flexDirection:'row',
-        
-        justifyContent:'center'
-    },
-    icon:{
-        // height:50,
-        // width:50,
-        margin:10,
-        // backgroundColor:'#27ae60',
-    },  
-    footer:{
-        
+    forgotpassword:{
         alignItems:'center',
-        marginTop:20
+        marginBottom:30,
+        marginTop:10,
+    },
+    forgotpassword_text:{
+        fontSize:15,
+        fontWeight:'bold'
+    },
+    footer:{
+        // flexDirection:'row',
+        alignItems:'center',
+        marginTop:50,
     }
 })
