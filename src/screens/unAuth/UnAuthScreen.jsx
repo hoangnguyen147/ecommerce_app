@@ -11,7 +11,7 @@ const UnAuth = createStackNavigator();
 
 const screens = [
     {
-        name: "Login",
+        name: "SignIn",
         component: Signin,
         options: {
             title: "Đăng nhập",
@@ -20,7 +20,7 @@ const screens = [
         }
     },
     {
-        name: "Register",
+        name: "SignUp",
         component: Signup,
         options: {
             title: "Đăng ký",

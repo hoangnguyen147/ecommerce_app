@@ -76,7 +76,7 @@ export default function Signup({navigation}){
                                     If you have an account?   
                                 </Text>
                                 <TouchableOpacity 
-                                    onPress={()=>navigation.navigate('signin')}
+                                    onPress={()=>navigation.navigate('SignIn')}
                                     style={{height:20}}
                                 >
                                     <Text style={{color:'#27ae60'}}>Sign In here</Text>

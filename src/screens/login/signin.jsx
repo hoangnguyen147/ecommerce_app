@@ -86,7 +86,7 @@ function Signin({ navigation, ...props }) {
                     Didn't have any account?
                   </Text>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('signup')}
+                    onPress={() => navigation.navigate('SignUp')}
                   >
                     <Text style={{ color: '#27ae60' }}>Sign up here</Text>
                   </TouchableOpacity>
