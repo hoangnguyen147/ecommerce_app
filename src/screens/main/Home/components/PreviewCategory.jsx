@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import { PreviewCategoryWrapper, PreviewContent, PreviewLeft, PreviewRight, ShopNow, TextContent } from '../Home.styles';
 
-const PreviewCategory = () => {
+const PreviewCategory = ({ ...props}) => {
 
 
   return (
