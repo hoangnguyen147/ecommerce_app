@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import Header2 from '../../../components/Header/Header2';
@@ -10,6 +10,8 @@ const data = [1,2,3,4,5,6,7,8,9,10]
 
 function SearchProduct({navigation, ...props}) {
     const { width, height } = useWindowDimensions();
+    const [search, setSearch] = useState("");
+
 
     return (
         <SafeArea>
@@ -18,6 +20,7 @@ function SearchProduct({navigation, ...props}) {
             <FlatList
                 data={data}
                 renderItem={({ item, index }) => {
+                  
                   return (
                     <ProductItem width={width * 0.9} data={item} key={index} />
                   )

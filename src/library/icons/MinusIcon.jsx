@@ -1,21 +1,23 @@
-import * as React from "react"
+import * as React from "react";
+import Svg, { Path } from "react-native-svg"
+
 
 const MinusIcon = (props) => (
-  <svg
+  <Svg
     width={20}
     height={20}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path
+    <Path
       d="M4.167 10h11.666"
       stroke="#000"
       strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </Svg>
 )
 
 export default MinusIcon;
