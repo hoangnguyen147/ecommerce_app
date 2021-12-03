@@ -5,11 +5,16 @@ import CartIcon from '../../library/icons/CartIcon';
 import Login from '../unAuth/Login';
 import Register from '../unAuth/Register';
 import Home from './Home/Home';
+import ProductDetail from './ProductDetail/ProductDetail';
 import SearchProduct from './SearchProduct/SearchProduct';
 
 const Main = createStackNavigator();
 
 const screens = [
+    {
+        name:"ProductDetail",
+        component:ProductDetail,
+    },
     {
         name: "Home",
         component: Home,
