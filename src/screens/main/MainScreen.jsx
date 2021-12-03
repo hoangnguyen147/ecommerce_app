@@ -7,6 +7,7 @@ import Register from '../unAuth/Register';
 import Cart from './Cart/Cart';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
+import ProductDetail from './ProductDetail/ProductDetail';
 import SearchProduct from './SearchProduct/SearchProduct';
 
 const Main = createStackNavigator();
@@ -23,6 +24,10 @@ const screens = [
     {
         name: "Profile",
         component: Profile,
+    },
+    {
+        name: "ProductDetail",
+        component: ProductDetail,
     },
     {
         name: "Cart",

@@ -5,7 +5,7 @@ import MoreVerticalIcon from '../../../../library/icons/MoreVerticalIcon'
 import StarFilled from '../../../../library/icons/StarFilled'
 import { ItemContent, ItemImage, ItemName, ItemPrice, ProductItemWrapper, StarWrapper, VoteWrapper } from '../SearchProduct.styles'
 
-const ProductItem = ({data, width, ...props}) => {
+const ProductItem = ({data, width, navigation, ...props}) => {
     return (
         <ProductItemWrapper style={{width: width}}>
             <ItemImage source={require("../../../../../assets/images/g102.jpg")} style={{width: width * 0.24, height: width * 0.24}} />
@@ -17,7 +17,7 @@ const ProductItem = ({data, width, ...props}) => {
                         <StarFilled />
                         <Text style={{paddingLeft: 4}}>4.9</Text>
                     </StarWrapper>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("ProductDetail")}>
                       <MoreVerticalIcon />
                     </TouchableOpacity>
                 </VoteWrapper>

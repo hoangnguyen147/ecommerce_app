@@ -22,7 +22,7 @@ function SearchProduct({navigation, ...props}) {
                 renderItem={({ item, index }) => {
                   
                   return (
-                    <ProductItem width={width * 0.9} data={item} key={index} />
+                    <ProductItem navigation={navigation} width={width * 0.9} data={item} key={index} />
                   )
                 }}
                 showsVerticalScrollIndicator={false}
