@@ -4,7 +4,9 @@ import { Text, View } from 'react-native';
 import CartIcon from '../../library/icons/CartIcon';
 import Login from '../unAuth/Login';
 import Register from '../unAuth/Register';
+import Cart from './Cart/Cart';
 import Home from './Home/Home';
+import Profile from './Profile/Profile';
 import SearchProduct from './SearchProduct/SearchProduct';
 
 const Main = createStackNavigator();
@@ -17,6 +19,14 @@ const screens = [
     {
         name: "Search",
         component: SearchProduct,
+    },
+    {
+        name: "Profile",
+        component: Profile,
+    },
+    {
+        name: "Cart",
+        component: Cart,
     },
 ]
 

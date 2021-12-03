@@ -41,7 +41,7 @@ function Home({ navigation, ...props }) {
   return (
     <SafeArea>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Header />
+        <Header navigation={navigation} />
         <StartArea>
           <HelloWrapper>Xin chào Huy Hoàng,</HelloWrapper>
           <QuestionWrapper>Bạn tìm kiếm sản phẩm gì hôm nay ?</QuestionWrapper>

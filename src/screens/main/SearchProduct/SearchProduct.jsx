@@ -6,7 +6,7 @@ import Search from '../../../components/Search/Search';
 import SafeArea from '../../../components/utils/SafeArea';
 import ProductItem from './components/ProductItem';
 
-const data = [1,2,3,4,5,6,7,8,9,10]
+const data = [1,2,3,4,5,6,7]
 
 function SearchProduct({navigation, ...props}) {
     const { width, height } = useWindowDimensions();

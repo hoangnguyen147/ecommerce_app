@@ -26,6 +26,7 @@ export const ItemContent = styled(View)`
 
 export const ItemName = styled(Text)`
     padding: 4px 0;
+    font-weight: 700;
 `
 
 export const ItemPrice = styled(Text)`

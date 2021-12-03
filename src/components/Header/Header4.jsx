@@ -3,20 +3,19 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import CartIcon from '../../library/icons/CartIcon';
 import GoBackIcon from '../../library/icons/GoBackIcon';
 import MenuVariant from '../../library/icons/MenuVariant'
+import TrashIcon from '../../library/icons/TrashIcon';
 import { AvarImage, HeaderWrapper, UserArea } from './Header.styles'
 
-const Header2 = ({ navigation }) => {
+const Header4 = ({ navigation }) => {
     return (
         <HeaderWrapper>
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <GoBackIcon />
             </TouchableOpacity>
-            <Text>TÌM KIẾM</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-                <CartIcon />
-            </TouchableOpacity>
+            <Text>GIỎ HÀNG</Text>
+            <TrashIcon />
         </HeaderWrapper>
     )
 }
 
-export default Header2
+export default Header4;

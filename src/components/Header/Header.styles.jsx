@@ -19,3 +19,7 @@ export const AvarImage = styled(Image)`
     height: 30px;
     border-radius: 999px;
 `
+
+export const None = styled(View)`
+    width: 30px;
+`
