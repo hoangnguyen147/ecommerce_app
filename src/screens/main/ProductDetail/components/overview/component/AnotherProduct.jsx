@@ -37,6 +37,8 @@ const AnotherProduct=()=>{
                 data={data}
                 renderItem={renderItem}
                 horizontal={true}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
             />
         </View>
     )

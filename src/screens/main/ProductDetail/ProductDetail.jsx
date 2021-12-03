@@ -7,7 +7,7 @@ import Overview from "./components/overview/Overview"
 import Features from "./components/features/Features"
 
 
-const ProductDetail=()=>{
+const ProductDetail=({navigation})=>{
     const [detail,setDetail]=useState('Overview')
     const Item=({detail})=>{
         if(detail=='Overview'){
@@ -55,8 +55,11 @@ const ProductDetail=()=>{
     }
     return(
         <SafeArea>
-            <Header2/>
-            <ScrollView>
+            <Header2 title="CHI TIẾT" navigation={navigation} />
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+            >
                 <StartArea>
                     <PriceWrapper>
                         USD 35

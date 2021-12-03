@@ -15,7 +15,7 @@ function SearchProduct({navigation, ...props}) {
 
     return (
         <SafeArea>
-            <Header2 navigation={navigation} />
+            <Header2 title="TÌM KIẾM" navigation={navigation} />
             <Search />
             <FlatList
                 data={data}
