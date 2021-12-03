@@ -23,9 +23,9 @@ const screens = [
 function MainScreen(props) {
     return (
         <Main.Navigator screenOptions={{ headerShown: false }}>
-            {screens.map((screenDetail) => {
+            {screens.map((screenDetail, index) => {
                 return (
-                    <Main.Screen {...screenDetail} />
+                    <Main.Screen key={index} {...screenDetail} />
                 )
             })}
         </Main.Navigator>

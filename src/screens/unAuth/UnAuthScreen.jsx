@@ -34,9 +34,9 @@ function UnAuthScreen(props) {
         <UnAuth.Navigator screenOptions={{
             // headerShown: false,
         }}>
-            {screens.map((screenDetail) => {
+            {screens.map((screenDetail, index) => {
                 return (
-                    <UnAuth.Screen {...screenDetail} />
+                    <UnAuth.Screen key={index} {...screenDetail} />
                 )
             })}
         </UnAuth.Navigator>

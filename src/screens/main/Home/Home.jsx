@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FlatList, ScrollView, Text, TouchableOpacity, useWindowDimensions, View, StyleSheet, Dimensions } from 'react-native';
+import { Button, FlatList, ScrollView, Text, TouchableOpacity, useWindowDimensions, View, StyleSheet, Dimensions, LogBox } from 'react-native';
 import { connect } from 'react-redux';
 import SafeArea from '../../../components/utils/SafeArea';
 import { login, logout } from '../../../redux/actions/user';
@@ -32,6 +32,11 @@ function Home({ navigation, ...props }) {
 
   }, [])
 
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    LogBox.ignoreLogs(['VirtualizedList: missing keys for items']);
+  }, [])
+
 
   return (
     <SafeArea>
@@ -42,37 +47,40 @@ function Home({ navigation, ...props }) {
           <QuestionWrapper>Bạn tìm kiếm sản phẩm gì hôm nay ?</QuestionWrapper>
         </StartArea>
         <SearchFake onPress={() => navigation.navigate('Search')} />
-        <Search />
         <MainHome>
-          <CategoryList  data={data} />
-          <PreviewCategory  width={width} />
+          <CategoryList data={data} />
+          <PreviewCategory width={width} />
           <ProductWrapper>
             <ToolArea>
               <BestSellerWrapper>BEST SELLER</BestSellerWrapper>
               <SeeAllWrapper>See All</SeeAllWrapper>
             </ToolArea>
 
-            <ListBestSeller
-              data={data}
-              // horizontal={true}
-              contentContainerStyle={styles.container}
-              numColumns={2}
-              renderItem={({ item, index }) => {
-                return (
-                  <BaseProductCardWrapper
-                    key={index}
-                    style={{ width: width * 0.42, marginLeft: width * (index % 2 ? 0.03 : 0.05), marginRight: width * (index % 2 ? 0.05 : 0.03), marginVertical: 8 }}
-                  >
-                    <ProductImage source={require("../../../../assets/images/headphone.png")} />
-                    <ProductName>
-                      TMA-2 HD Wireless
-                    </ProductName>
-                  </BaseProductCardWrapper>
-                )
-              }}
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            />
+
+            <View>
+              <ListBestSeller
+                data={data}
+                horizontal={true}
+                contentContainerStyle={styles.container}
+                // numColumns={2}
+                // scrollEnabled={false}
+                renderItem={({ item, index }) => {
+                  return (
+                    <BaseProductCardWrapper
+                      key={index}
+                      style={{ width: width * 0.42, marginLeft: width * (index % 2 ? 0.03 : 0.05), marginRight: width * (index % 2 ? 0.05 : 0.03), marginVertical: 8 }}
+                    >
+                      <ProductImage source={require("../../../../assets/images/headphone.png")} />
+                      <ProductName>
+                        TMA-2 HD Wireless
+                      </ProductName>
+                    </BaseProductCardWrapper>
+                  )
+                }}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
           </ProductWrapper>
 
         </MainHome>

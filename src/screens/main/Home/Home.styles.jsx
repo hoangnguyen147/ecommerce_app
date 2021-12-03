@@ -102,7 +102,7 @@ export const PreviewCategoryWrapper = styled(View)`
     flex-direction: row;
     /* justify-content: space-around; */
     align-items: center;
-    height: 160;
+    height: 160px;
     border-radius: 20px;
     overflow: hidden;
     margin: 0 auto;
@@ -132,7 +132,7 @@ export const ShopNow = styled(Text)`
 `
 
 export const PreviewRight = styled(Image)`
-    height: 160;
+    height: 160px;
     flex-grow: 1;
     /* height: 200px; */
 `
