@@ -2,7 +2,10 @@ import { handleActions } from "redux-actions";
 import * as constants from "../constants";
 
 const initialState = {
-  token: ""
+  token: "",
+  user: "",
+  avatar: "",
+  fullname: ""
 };
 
 const userReducer = handleActions(
@@ -10,14 +13,11 @@ const userReducer = handleActions(
     [constants.USER_LOGIN_SUCCESS]: (state, action) => {
       return {
         ...state,
-        token: "token here"
+        ...action.payload
       }
     },
     [constants.USER_LOGOUT]: (state, action) => {
-      return {
-        ...state,
-        token: ""
-      }
+      return initialState
     }
   },
   initialState

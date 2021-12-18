@@ -6,53 +6,54 @@ import * as Yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { login } from '../../redux/actions/user';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import SafeArea from '../../components/utils/SafeArea';
 
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid email')
+  username: Yup.string()
     .required('Trường này là bắt buộc!'),
   password: Yup.string()
-    .min(2, 'Quá ngắn!')
+    .min(5, 'Quá ngắn!')
     .required('Trường này là bắt buộc!'),
 });
 
 
 function Signin({ navigation, ...props }) {
+  const dispatch = useDispatch();
   const submit = (values) => {
-    console.log(values)
-    console.log("alo23")
+
     // values = {}
-    props.login();
+    dispatch(login(values));
     console.log(props)
   }
   return (
-    <>
-      <SafeAreaView style={styles.container}>
+    <SafeArea>
+      <View style={styles.container}>
         <View style={styles.title}>
           <Text style={{ fontSize: 45, fontWeight: 'bold' }}>Audio</Text>
           <Text style={{ fontSize: 16 }}>It's modular and designed to last</Text>
         </View>
         <KeyboardAwareScrollView>
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ username: '', password: '' }}
             validationSchema={SignupSchema}
             onSubmit={values => submit(values)}
           >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
               <View style={styles.form}>
                 <View style={styles.form_input}>
-                  <Text>Email</Text>
+                  <Text>username</Text>
                   <TextInput
-                    placeholder='email'
+                    placeholder='Ten dang nhap'
                     style={styles.text_input}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                    value={values.email}
+                    onChangeText={handleChange('username')}
+                    onBlur={handleBlur('username')}
+                    value={values.username}
 
                   />
-                  {errors.email && touched.email ? (
-                    <Text style={{ color: 'red' }}>{errors.email}</Text>
+                  {errors.username && touched.username ? (
+                    <Text style={{ color: 'red' }}>{errors.username}</Text>
                   ) : null}
                 </View>
                 <View style={styles.form_input}>
@@ -77,7 +78,7 @@ function Signin({ navigation, ...props }) {
                 </View>
                 <View>
                   {/* <Button onPress={handleSubmit} title="Sign In" /> */}
-                  <Button onPress={() => props.login()} title="Sign In" />
+                  <Button onPress={() => handleSubmit()} title="Sign In" />
 
 
                 </View>
@@ -88,15 +89,15 @@ function Signin({ navigation, ...props }) {
                   <TouchableOpacity
                     onPress={() => navigation.navigate('SignUp')}
                   >
-                    <Text style={{ color: '#27ae60' }}>Sign up here</Text>
+                    <Text style={{ color: '#27ae60' }}>Dang</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             )}
           </Formik>
         </KeyboardAwareScrollView>
-      </SafeAreaView>
-    </>
+      </View>
+    </SafeArea>
   )
 }
 
@@ -140,14 +141,5 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = {
-  login
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default Signin;
 

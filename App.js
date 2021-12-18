@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components/native';
 import AppContainer from './src/navigation/AppNavigation';
 import store from './src/redux/store';
 import theme from "./src/theme";
+import Loading from './src/components/Loading';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -21,6 +22,7 @@ export default function App() {
     Lato_400Regular,
     Lato_700Bold
   });
+
 
   if (!oswaldLoaded || !latoLoaded) {
     return null;
