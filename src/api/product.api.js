@@ -1,10 +1,9 @@
 import httpRequest from "../services/httpRequest";
 import callApi from "./baseApi";
 
-export const userLogin = async (data) => {
+export const getListProduct = async (data) => {
   return callApi({
-    url: "/auth/login",
-    method: "post",
-    data: data
+    url: '/product/get-all-product',
+    method: 'get'
   })
 }

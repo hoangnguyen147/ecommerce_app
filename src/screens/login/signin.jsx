@@ -8,23 +8,28 @@ import { login } from '../../redux/actions/user';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import SafeArea from '../../components/utils/SafeArea';
+import { useEffect } from 'react';
 
 
 const SignupSchema = Yup.object().shape({
-  username: Yup.string()
-    .required('Trường này là bắt buộc!'),
-  password: Yup.string()
-    .min(5, 'Quá ngắn!')
-    .required('Trường này là bắt buộc!'),
+  // username: Yup.string()
+  //   .required('Trường này là bắt buộc!'),
+  // password: Yup.string()
+  //   .min(5, 'Quá ngắn!')
+  //   .required('Trường này là bắt buộc!'),
 });
 
 
 function Signin({ navigation, ...props }) {
+
   const dispatch = useDispatch();
   const submit = (values) => {
 
     // values = {}
-    dispatch(login(values));
+    dispatch(login({
+      username: 'hoangnguyen147',
+      password: 'adminPass123'
+    }))
     console.log(props)
   }
   return (

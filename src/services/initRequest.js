@@ -30,6 +30,7 @@ export default function initRequest(store) {
       }
 
       const accessToken = store.getState().user.token;
+      console.log(accessToken)
       if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`;
       }

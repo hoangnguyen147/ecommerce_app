@@ -12,6 +12,7 @@ import AppContainer from './src/navigation/AppNavigation';
 import store from './src/redux/store';
 import theme from "./src/theme";
 import Loading from './src/components/Loading';
+import { LogBox } from 'react-native';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -22,6 +23,9 @@ export default function App() {
     Lato_400Regular,
     Lato_700Bold
   });
+
+  LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  LogBox.ignoreLogs(['VirtualizedList: missing keys for items']);
 
 
   if (!oswaldLoaded || !latoLoaded) {
@@ -39,4 +43,3 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
- 

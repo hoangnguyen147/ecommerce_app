@@ -67,11 +67,12 @@ export const BaseProductCardWrapper = styled(View)`
 `
 
 export const ProductImage = styled(Image)`
-    height: 110px;
+    /* height: 110px; */
 `
 
 export const ProductName = styled(Text)`
-
+    font-size: 12px;
+    text-align: center;
 `
 
 export const ProductPrice = styled(Text)`

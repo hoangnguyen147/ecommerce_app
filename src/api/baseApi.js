@@ -1,7 +1,8 @@
 import axios from "axios";
+import { setLoading } from "../redux/actions/general";
 import store from "../redux/store";
 
-const BASE_API = "";
+const BASE_API = "http://api.doanky5.huyhoangdev.engineer/api";
 
 export default async function callApi({
 	url,
@@ -9,9 +10,9 @@ export default async function callApi({
 	data,
 	option,
 }) {
-	const token = "";
+	const token = store.getState().user.token;
 	return new Promise((resolve, reject) => {
-		// store.dispatch(setLoading(true));
+		store.dispatch(setLoading(true));
 		axios({
 			method,
 			url: `${BASE_API}${url}`,
@@ -20,12 +21,12 @@ export default async function callApi({
 			// ...option,
 		})
 			.then((res) => {
-				// store.dispatch(offLoading());
+				store.dispatch(setLoading(false));
 				console.log("promise", res)
 				resolve(res.data);
 			})
 			.catch((err) => {
-				// store.dispatch(offLoading());
+				store.dispatch(setLoading(false));
 				reject(err);
 			});
 	});

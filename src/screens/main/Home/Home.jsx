@@ -1,40 +1,47 @@
 import React from 'react';
-import { Button, FlatList, ScrollView, Text, TouchableOpacity, useWindowDimensions, View, StyleSheet, Dimensions, LogBox } from 'react-native';
+import { Button, FlatList, ScrollView, Text, TouchableOpacity, useWindowDimensions, View, StyleSheet, Dimensions, LogBox, Image, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import SafeArea from '../../../components/utils/SafeArea';
 import { login, logout } from '../../../redux/actions/user';
-import CartIcon from '../../../library/icons/CartIcon';
 import Header from '../../../components/Header/Header';
-import { BaseProductCardWrapper, BestSellerWrapper, ButtonCat, HelloWrapper, ListBestSeller, MainHome, ProductArea, ProductImage, ProductName, ProductWrapper, QuestionWrapper, SearchIconWrapper, SearchInput, SearchWrapper, SeeAllWrapper, StartArea, ToolArea } from './Home.styles';
+import {
+  BaseProductCardWrapper, BestSellerWrapper, ButtonCat, HelloWrapper, ListBestSeller, MainHome,
+  ProductArea, ProductImage, ProductName, ProductWrapper, QuestionWrapper, SearchIconWrapper, SearchInput, SearchWrapper,
+  SeeAllWrapper, StartArea, ToolArea
+} from './Home.styles';
 import SearchIcon from '../../../library/icons/SearchIcon';
 import { useState } from 'react';
 import CategoryList from './components/CategoryList';
 import PreviewCategory from './components/PreviewCategory';
 import Search, { SearchFake } from '../../../components/Search/Search';
 import { useEffect } from 'react';
-import { testApi } from '../../../api/baseApi';
-import axios from 'axios';
+import { getListProduct } from '../../../api/product.api';
+import store from '../../../redux/store';
+import { getListCategory } from '../../../api/category.api';
+import { useDispatch } from 'react-redux';
+import { getProducts } from '../../../redux/actions/product';
+import { useSelector } from 'react-redux';
+import { getCategories } from '../../../redux/actions/category';
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 function Home({ navigation, ...props }) {
   const { width, height } = useWindowDimensions();
+  // const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState("");
 
-  const basePaddingHor = "0 " + (width * 0.05 + "px");
+  const dispatch = useDispatch();
 
-  console.log(basePaddingHor)
+  const products = useSelector(state => state.product.data);
+
 
   useEffect(async () => {
     /* const res = await testApi();
     console.log(res, "res"); */
-
-
-  }, [])
-
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-    LogBox.ignoreLogs(['VirtualizedList: missing keys for items']);
+    // getAllProduct();    
+    dispatch(getProducts());
+    dispatch(getCategories());
   }, [])
 
 
@@ -56,10 +63,9 @@ function Home({ navigation, ...props }) {
               <SeeAllWrapper>See All</SeeAllWrapper>
             </ToolArea>
 
-
             <View>
               <ListBestSeller
-                data={data}
+                data={products}
                 horizontal={true}
                 contentContainerStyle={styles.container}
                 // numColumns={2}
@@ -70,9 +76,9 @@ function Home({ navigation, ...props }) {
                       key={index}
                       style={{ width: width * 0.42, marginLeft: width * (index % 2 ? 0.03 : 0.05), marginRight: width * (index % 2 ? 0.05 : 0.03), marginVertical: 8 }}
                     >
-                      <ProductImage source={require("../../../../assets/images/headphone.png")} />
+                      <ProductImage style={{ width: width * 0.3, height: 100}} source={{ uri: item.image }} />
                       <ProductName>
-                        TMA-2 HD Wireless
+                        {item.name}
                       </ProductName>
                     </BaseProductCardWrapper>
                   )
@@ -80,6 +86,20 @@ function Home({ navigation, ...props }) {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
               />
+              {/* {products.map((item, index) => {
+                // console.log(item.image)
+                return (
+                  <BaseProductCardWrapper
+                    key={index}
+                    style={{ width: width * 0.42, marginLeft: width * (index % 2 ? 0.03 : 0.05), marginRight: width * (index % 2 ? 0.05 : 0.03), marginVertical: 8 }}
+                  >
+                    <ProductImage style={{width: 100, height: 100}}source={{ uri: item.image }} />
+                    <ProductName>
+                      {item.name}
+                    </ProductName>
+                  </BaseProductCardWrapper>
+                )
+              })} */}
             </View>
           </ProductWrapper>
 
@@ -97,20 +117,18 @@ const styles = StyleSheet.create({
   },
   itemWrapper: {
     // paddingHorizontal: 10
+  },
+  bestSeller: {
+    margin: "0 auto",
+    padding: 0,
+    flex: 1
   }
 
 })
 
 
-const mapStateToProps = (state) => ({
-
-});
-
-const mapDispatchToProps = {
-  logout
-};
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 
 
