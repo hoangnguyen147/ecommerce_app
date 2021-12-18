@@ -55,8 +55,8 @@ function Home({ navigation, ...props }) {
         </StartArea>
         <SearchFake onPress={() => navigation.navigate('Search')} />
         <MainHome>
-          <CategoryList data={data} />
-          <PreviewCategory width={width} />
+          <CategoryList width={width} data={data} />
+          {/* <PreviewCategory width={width} /> */}
           <ProductWrapper>
             <ToolArea>
               <BestSellerWrapper>BEST SELLER</BestSellerWrapper>
