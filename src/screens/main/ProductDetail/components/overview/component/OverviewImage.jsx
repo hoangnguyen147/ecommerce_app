@@ -13,7 +13,7 @@ const OverviewImage=({data})=>{
             <View style={styles.overview_image_wrapper}>
                 <Image
                     style={{width: width * 5/6, height: width * 5/6}}
-                    source={{uri: item.images}}
+                    source={{uri: item}}
                 />
             </View>
         )

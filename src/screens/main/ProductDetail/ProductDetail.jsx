@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TouchableHighlight } from "react-native"
+import React, { useRef, useState } from "react"
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TouchableHighlight, Keyboard, TextInput } from "react-native"
 import { StartArea, PriceWrapper } from "./ProductDetail.styles"
 import Header2 from "../../../components/Header/Header2"
 import SafeArea from "../../../components/utils/SafeArea"
@@ -7,12 +7,55 @@ import Overview from "./components/overview/Overview"
 import Features from "./components/features/Features"
 import { formatterVnd } from "../../../utils/formatNumber"
 import { CartFooter, MainCart } from "../Cart/Cart.styles"
+import { useEffect } from "react"
+import { getComments } from "../../../api/comment.api"
 
 
 const ProductDetail = ({ route, navigation }) => {
   const [detail, setDetail] = useState('Overview');
+  const [comments, setComments] = useState("");
 
-  const { data } = route.params
+  const commentRef = useRef();
+
+
+  const { data } = route.params;
+
+  const getCommentOfProduct = async (id) => {
+    try {
+      const res = await getComments(id);
+      console.log("comment", res.data);
+      setComments(res.data)
+    } catch (err) {
+
+    }
+  }
+
+  useEffect(() => {
+    getCommentOfProduct(data.id);
+
+  }, [])
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // or some other action
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // or some other action
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   const Line1 = ({ detail }) => {
     if (detail == 'Overview') {
@@ -51,7 +94,7 @@ const ProductDetail = ({ route, navigation }) => {
       <Header2 title="CHI TIẾT" navigation={navigation} />
       <View style={styles.container}>
 
-        <View style={styles.content}>
+        <View style={{ flex: isKeyboardVisible ? 1 : 0.935 }}>
           <ScrollView
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
@@ -81,18 +124,23 @@ const ProductDetail = ({ route, navigation }) => {
             </View>
 
             {detail == "Overview" ? (
-              <Overview images={data.image} />
+              <Overview images={data.image}/>
             ) : (
               <Features feature={data.overview} name={data.name} />
             )}
           </ScrollView>
 
         </View>
-        <View style={styles.add_to_cart_wrapper}>
-          <TouchableHighlight>
-            <Text style={{ color: 'white' }}>Add to card</Text>
-          </TouchableHighlight>
-        </View>
+
+        {isKeyboardVisible ? (
+          null
+        ) : (
+          <View style={styles.add_to_cart_wrapper}>
+            <TouchableHighlight>
+              <Text style={{ color: 'white' }}>THÊM VÀO GIỎ HÀNG</Text>
+            </TouchableHighlight>
+          </View>
+        )}
       </View>
     </SafeArea>
   )
@@ -102,6 +150,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10
+  },
+  comment_input: {
+    padding: 5,
+    marginVertical: 10
   },
   content: {
     flex: 0.935
