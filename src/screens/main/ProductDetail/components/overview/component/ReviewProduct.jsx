@@ -4,11 +4,10 @@ import { getComments } from '../../../../../../api/comment.api'
 import CommentInput from '../../../../../../components/CommentInput/CommentInput'
 import Search from '../../../../../../components/Search/Search'
 import { SearchInput } from '../../../../../../components/Search/Search.styles'
+import RenderStar from '../../../../../../components/Stars/RenderStar'
 
 
 const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props }) => {
-
-    
 
     const renderItem = ({ item }) => {
         return (
@@ -16,7 +15,7 @@ const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props
                 <View style={styles.preview_item_head}>
                     <Image
                         style={{ width: 40, height: 40 }}
-                        source={{ uri: "https://hoangnguyen147.sgp1.digitaloceanspaces.com/images/doanky5/default2.png" }}
+                        source={{ uri: item.avatar || "https://hoangnguyen147.sgp1.digitaloceanspaces.com/images/doanky5/default2.png" }}
                     />
                     <View style={styles.preview_name_rate}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -25,6 +24,7 @@ const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props
                         </View>
 
                         <Text >{item.content}</Text>
+                        <RenderStar vote={item.vote} />
                     </View>
                 </View>
                 <View style={styles.preview_item_body}>

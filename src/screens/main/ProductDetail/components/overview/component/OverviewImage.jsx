@@ -6,9 +6,7 @@ import { FlatList, Image, StyleSheet, Text, View, useWindowDimensions } from 're
 
 const OverviewImage = ({ data }) => {
     const { width, height } = useWindowDimensions();
-    console.log(data)
     const renderItem = ({ item }) => {
-        console.log("imte", item)
         return (
             <View style={styles.overview_image_wrapper}>
                 <Image
