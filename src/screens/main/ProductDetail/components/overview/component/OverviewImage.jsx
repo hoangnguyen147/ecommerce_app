@@ -3,22 +3,17 @@ import { FlatList, Image, StyleSheet, Text, View} from 'react-native'
 
 
 
-const data=[{
-    image:require('../../../../../../../assets/images/headphone.png')
-},
-{
-    image:require('../../../../../../../assets/images/headphone.png')
-},
-{
-    image:require('../../../../../../../assets/images/headphone.png')
-}]
-const OverviewImage=()=>{
+
+const OverviewImage=({data})=>{
+    const width = 360;
+    console.log(data)
     const renderItem=({item})=>{
+        console.log("imte", item)
         return(
             <View style={styles.overview_image_wrapper}>
                 <Image
-                    style={styles.overview_image}
-                    source={item.image}
+                    style={{width: width * 5/6, height: width * 5/6}}
+                    source={{uri: item.images}}
                 />
             </View>
         )

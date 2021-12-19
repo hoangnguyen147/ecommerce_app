@@ -3,20 +3,13 @@ import { StyleSheet, Text, View,Button,TouchableHighlight} from 'react-native'
 import OverviewImage from './component/OverviewImage'
 import ReviewProduct from './component/ReviewProduct'
 import AnotherProduct from './component/AnotherProduct'
-const Overview=()=>{
-
+const Overview=(images)=>{
+    const imageData = [images, images, images, images]
     return(
         <View style={styles.overview_wrapper}>
-            <OverviewImage/>
+            <OverviewImage data={imageData}/>
             <ReviewProduct/>
             <AnotherProduct/>
-            <View style={{marginBottom:20}}>
-                <TouchableHighlight>
-                    <View style={styles.add_card}>
-                        <Text style={{color:'white'}}>Add to card</Text>
-                    </View>  
-                </TouchableHighlight>
-            </View>
 
   
         </View>
@@ -25,7 +18,7 @@ const Overview=()=>{
 
 const styles=StyleSheet.create({
     overview_wrapper:{
-        marginHorizontal:20,
+        marginHorizontal:10,
     },
     add_card:{
         backgroundColor:'#2ecc71',

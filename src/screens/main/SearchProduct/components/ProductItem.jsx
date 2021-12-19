@@ -13,13 +13,15 @@ const ProductItem = ({data, width, navigation, ...props}) => {
             <ItemImage source={{ uri: data.image }} style={{width: width * 0.24, height: width * 0.24}} />
             <ItemContent>
                 <ItemName>{data.name}</ItemName>
-                <ItemPrice>{formatterVnd.format(data.price)}</ItemPrice>
+                <ItemPrice>{formatterVnd(data.price)}</ItemPrice>
                 <VoteWrapper>
                     <StarWrapper>
                         <StarFilled />
                         <Text style={{paddingLeft: 4}}>{data.vote}</Text>
                     </StarWrapper>
-                    <TouchableOpacity onPress={() => navigation.navigate("ProductDetail")}>
+                    <TouchableOpacity onPress={() => navigation.navigate("ProductDetail", {
+                        data: data
+                    })}>
                       <MoreVerticalIcon />
                     </TouchableOpacity>
                 </VoteWrapper>
