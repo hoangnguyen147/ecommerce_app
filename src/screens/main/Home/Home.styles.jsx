@@ -121,10 +121,10 @@ export const PreviewContent = styled(View)`
 `
 
 export const TextContent = styled(Text)`
-    font-size: 20px;
+    font-size: 16px;
     font-family: ${(props) => props.theme.fonts.heading2};
     font-weight: 800;
-    padding: 12px 0;
+    padding: 12px 5px;
     
 `
 
@@ -135,6 +135,7 @@ export const ShopNow = styled(Text)`
 export const PreviewRight = styled(Image)`
     height: 160px;
     flex-grow: 1;
+    margin-right: 5px;
     /* height: 200px; */
 `
 

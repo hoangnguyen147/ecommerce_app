@@ -13,27 +13,13 @@ import { getComments } from "../../../api/comment.api"
 
 const ProductDetail = ({ route, navigation }) => {
   const [detail, setDetail] = useState('Overview');
-  const [comments, setComments] = useState("");
 
   const commentRef = useRef();
 
 
   const { data } = route.params;
 
-  const getCommentOfProduct = async (id) => {
-    try {
-      const res = await getComments(id);
-      console.log("comment", res.data);
-      setComments(res.data)
-    } catch (err) {
 
-    }
-  }
-
-  useEffect(() => {
-    getCommentOfProduct(data.id);
-
-  }, [])
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -124,7 +110,7 @@ const ProductDetail = ({ route, navigation }) => {
             </View>
 
             {detail == "Overview" ? (
-              <Overview images={data.image}/>
+              <Overview images={data.image} name={data.name} productId={data.id} />
             ) : (
               <Features feature={data.overview} name={data.name} />
             )}

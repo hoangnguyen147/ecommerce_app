@@ -1,69 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, Image, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { getComments } from '../../../../../../api/comment.api'
 import CommentInput from '../../../../../../components/CommentInput/CommentInput'
 import Search from '../../../../../../components/Search/Search'
 import { SearchInput } from '../../../../../../components/Search/Search.styles'
 
-const data = [
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-    {
-        avatar: require('../../../../../../../assets/images/avar.jpg'),
-        name: 'Madelina',
-        time_comment: '1 month ago',
-        rate: 5,
-        comment: 'good!'
-    },
-]
-const ReviewProduct = ({ ...props }) => {
+
+const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props }) => {
+
+    
+
     const renderItem = ({ item }) => {
         return (
             <View style={styles.preview_item}>
                 <View style={styles.preview_item_head}>
                     <Image
-                        style={styles.preview_avatar}
-                        source={require('../../../../../../../assets/images/avar.jpg')}
+                        style={{ width: 40, height: 40 }}
+                        source={{ uri: "https://hoangnguyen147.sgp1.digitaloceanspaces.com/images/doanky5/default2.png" }}
                     />
                     <View style={styles.preview_name_rate}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={styles.preview_name}>{item.name}</Text>
-                            <Text style={{ color: '#7f8c8d' }}>{item.time_comment}</Text>
+                            <Text style={styles.preview_name}>{item.fullname}</Text>
+                            <Text style={{ color: '#7f8c8d' }}>{"1 tháng trước"}</Text>
                         </View>
 
-                        <Text >{item.rate}</Text>
+                        <Text >{item.content}</Text>
                     </View>
                 </View>
                 <View style={styles.preview_item_body}>
@@ -77,7 +38,7 @@ const ReviewProduct = ({ ...props }) => {
             <View >
                 <Text style={styles.title}>Bình luận</Text>
             </View>
-            <CommentInput />
+            <CommentInput useComment={useComment} setIsModalRating={setIsModalRating} />
             <FlatList
                 data={data}
                 renderItem={renderItem}
@@ -98,7 +59,7 @@ const styles = StyleSheet.create({
         padding: 5,
         marginVertical: 10,
         borderColor: "#aaa"
-      },
+    },
     title: {
         marginVertical: 5,
         fontSize: 15,

@@ -3,9 +3,10 @@ import styled from "styled-components"
 
 export const CommentInput = styled(TextInput)`
     padding: 8px;
-    padding-left: 45px;
+    padding-left: 15px;
+    padding-right: 45px;
     width: 100%;
-    border: 2px solid #ddd;
+    border: 2px solid #ccc;
     border-radius: 14px;
 `
 
@@ -22,7 +23,8 @@ export const CommentInputFake = styled(Text)`
 export const CommentWrapper = styled(View)`
     position: relative;
     flex-direction: row;
-    margin: 14px auto;
+    margin: 0px auto;
+    margin-bottom: 20px;
 `
 
 export const CommentIconWrapper = styled(View)`
@@ -34,4 +36,5 @@ export const SubmitIconWrapper = styled(View)`
     position: absolute;
     padding: 14px;
     right: 0;
+    z-index: 100;
 `
