@@ -5,14 +5,16 @@ import PlusIcon from '../../../../library/icons/PlusIcon'
 import TrashIcon from '../../../../library/icons/TrashIcon'
 import { ItemContent, ItemName, ItemPrice } from '../../SearchProduct/SearchProduct.styles'
 import { CartItemWrapper, CartToolsWrapper, Quantity, QuantityWrapper, ToolsWrapper } from '../Cart.styles'
+import { formatterVnd } from '../../../../utils/formatNumber';
 
 const CartItem = ({ data, width, ...props }) => {
+  console.log(data)
   return (
     <CartItemWrapper style={{ width: width }}>
-      <Image source={require("../../../../../assets/images/g102.jpg")} style={{ width: width * 0.24, height: width * 0.24 }} />
+      <Image source={{uri: data.image}} style={{ width: width * 0.24, height: width * 0.24 }} />
       <ItemContent>
-        <ItemName>Chuột gaming Logitech G102</ItemName>
-        <ItemPrice>300.000 VNĐ</ItemPrice>
+        <ItemName>{data.name}</ItemName>
+        <ItemPrice>{formatterVnd(data.price)}</ItemPrice>
         <CartToolsWrapper>
           <QuantityWrapper>
             <ToolsWrapper>

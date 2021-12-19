@@ -1,15 +1,18 @@
 import React from 'react'
 import { View, Text, FlatList, useWindowDimensions, TouchableOpacity } from 'react-native'
+import { useSelector } from 'react-redux';
 import Header4 from '../../../components/Header/Header4';
 import SafeArea from '../../../components/utils/SafeArea';
 import { CartFooter, CartItemWrapper, CheckoutButton, MainCart, SumText } from './Cart.styles';
 import CartItem from './components/CartItem';
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 const Cart = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
+  const data = useSelector(state => state.cart.data);
+  console.log(data);
 
   return (
     <SafeArea>

@@ -9,6 +9,8 @@ import { formatterVnd } from "../../../utils/formatNumber"
 import { CartFooter, MainCart } from "../Cart/Cart.styles"
 import { useEffect } from "react"
 import { getComments } from "../../../api/comment.api"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../../../redux/actions/cart"
 
 
 const ProductDetail = ({ route, navigation }) => {
@@ -19,6 +21,7 @@ const ProductDetail = ({ route, navigation }) => {
 
   const { data } = route.params;
 
+  const dispatch = useDispatch();
 
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -122,7 +125,7 @@ const ProductDetail = ({ route, navigation }) => {
           null
         ) : (
           <View style={styles.add_to_cart_wrapper}>
-            <TouchableHighlight>
+            <TouchableHighlight onPress={() => dispatch(addToCart(data))}>
               <Text style={{ color: 'white' }}>THÊM VÀO GIỎ HÀNG</Text>
             </TouchableHighlight>
           </View>
