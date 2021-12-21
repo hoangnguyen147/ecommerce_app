@@ -11,7 +11,6 @@ export const getProducts = () => {
     return async (dispatch) => {
         
         try {
-            // dispatch(setLoading(true));
             const res = await api.getListProduct();
             
             dispatch(getProductSuccess(res.data));
@@ -26,7 +25,6 @@ export const getProductsNotLoading = () => {
     return async (dispatch) => {
         
         try {
-            // dispatch(setLoading(true));
             const res = await api.getListProductNotLoading();
             
             dispatch(getProductSuccess(res.data));

@@ -10,7 +10,6 @@ export const getCategorySuccess = createAction(constants.GET_CATEGORY_SUCCESS);
 export const getCategories = () => {
     return async (dispatch) => {
         try {
-            // dispatch(setLoading(true));
             const res = await api.getListCategory();
             
             dispatch(getCategorySuccess(res.data));
