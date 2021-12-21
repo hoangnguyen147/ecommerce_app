@@ -19,7 +19,7 @@ function SearchProduct({ navigation, ...props }) {
   const filterData = products.filter((item) => {
     return item.name.toLowerCase().includes(value.toLocaleLowerCase())
   })
-      
+
   return (
     <SafeArea>
       <Header2 title="TÌM KIẾM" navigation={navigation} />
