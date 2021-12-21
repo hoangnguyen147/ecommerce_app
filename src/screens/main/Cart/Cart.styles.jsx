@@ -27,6 +27,7 @@ export const QuantityWrapper = styled(View)`
 export const ToolsWrapper = styled(TouchableOpacity)`
     border: 1px solid #888;
     border-radius: 5px;
+    border-color: ${props => props.disabled ? "#ccc" : "#000"};
 `
 
 export const Quantity = styled(Text)`

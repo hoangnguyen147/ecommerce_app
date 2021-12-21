@@ -10,7 +10,7 @@ export default function SimpleLottie({ props }) {
 
   if (!isLoading) return null;
   return (
-    <View style={{ height: height, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ height: height, justifyContent: "center", alignItems: "center", backgroundColor: 'transparent' }}>
       <LottieView
         source={require("../../../assets/sleep-cat.json")}
         style={styles.animation}

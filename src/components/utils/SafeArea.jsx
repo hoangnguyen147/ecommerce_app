@@ -14,7 +14,7 @@ const SafeArea = ({ children }) => {
   const {width, height} = useWindowDimensions();
   return (
     <SafeAreaWrapper>
-      <Loading isLoading={true} />
+      <Loading />
       {children}
     </SafeAreaWrapper>
   )

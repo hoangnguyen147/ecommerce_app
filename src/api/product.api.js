@@ -6,4 +6,12 @@ export const getListProduct = async () => {
     url: '/product/get-all-product',
     method: 'get'
   })
+};
+
+export const getListProductNotLoading = async () => {
+  return callApi({
+    url: '/product/get-all-product',
+    method: 'get',
+    showLoading: false
+  })
 }

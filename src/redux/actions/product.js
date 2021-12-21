@@ -12,10 +12,22 @@ export const getProducts = () => {
         
         try {
             // dispatch(setLoading(true));
-            console.log("111")
             const res = await api.getListProduct();
-            console.log(res);
-            console.log("123123")
+            
+            dispatch(getProductSuccess(res.data));
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+}
+
+export const getProductsNotLoading = () => {
+    return async (dispatch) => {
+        
+        try {
+            // dispatch(setLoading(true));
+            const res = await api.getListProductNotLoading();
             
             dispatch(getProductSuccess(res.data));
 

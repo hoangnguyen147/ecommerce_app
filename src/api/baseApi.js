@@ -9,10 +9,11 @@ export default async function callApi({
 	method,
 	data,
 	option,
+	showLoading = true
 }) {
 	const token = store.getState().user.token;
 	return new Promise((resolve, reject) => {
-		store.dispatch(setLoading(true));
+		showLoading && store.dispatch(setLoading(true));
 		axios({
 			method,
 			url: `${BASE_API}${url}`,
@@ -21,12 +22,12 @@ export default async function callApi({
 			// ...option,
 		})
 			.then((res) => {
-				store.dispatch(setLoading(false));
+				showLoading && store.dispatch(setLoading(false));
 				console.log("promise", res)
 				resolve(res.data);
 			})
 			.catch((err) => {
-				store.dispatch(setLoading(false));
+				showLoading && store.dispatch(setLoading(false));
 				reject(err);
 			});
 	});

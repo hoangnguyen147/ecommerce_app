@@ -9,6 +9,8 @@ import Stars from 'react-native-stars';
 import StarFilled from '../../../../../library/icons/StarFilled';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getComments, postAddComment } from '../../../../../api/comment.api';
+import { useDispatch } from 'react-redux';
+import { getProducts, getProductsNotLoading } from '../../../../../redux/actions/product';
 
 
 
@@ -17,13 +19,15 @@ const Overview = ({ images, name, productId }) => {
   const [isModalRating, setIsModalRating] = useState(false);
   const [commentInput, setCommentInput] = useState("");
   const useComment = [commentInput, setCommentInput];
+  const dispatch = useDispatch();
 
   const [comments, setComments] = useState("");
 
   const getCommentOfProduct = async (id) => {
     try {
       const res = await getComments(id);
-      setComments(res.data)
+      setComments(res.data);
+      dispatch(getProductsNotLoading());
     } catch (err) {
 
     }
@@ -124,7 +128,7 @@ export default Overview;
 
 const ModalRating = ({ modalVisible, setModalVisible, name, comment, setComment, productId, fetchData }) => {
 
-  const [vote, setVote] = useState(0);
+  const [vote, setVote] = useState(5);
 
   const handleVote = async () => {
     try {
