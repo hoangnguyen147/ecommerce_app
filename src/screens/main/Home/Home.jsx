@@ -22,6 +22,7 @@ import { useDispatch } from 'react-redux';
 import { getProducts } from '../../../redux/actions/product';
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../../redux/actions/category';
+import MoreVerticalIcon from '../../../library/icons/MoreVerticalIcon';
 
 
 function Home({ navigation, ...props }) {
@@ -31,9 +32,10 @@ function Home({ navigation, ...props }) {
   const dispatch = useDispatch();
 
   const products = useSelector(state => state.product.data);
+  const user = useSelector(state => state.user);
 
 
-  useEffect(async () => {   
+  useEffect(async () => {
     dispatch(getProducts());
     dispatch(getCategories());
   }, [])
@@ -42,15 +44,14 @@ function Home({ navigation, ...props }) {
   return (
     <SafeArea>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Header navigation={navigation} />
+        <Header avatar={user.avatar} navigation={navigation} />
         <StartArea>
-          <HelloWrapper>Xin chào Huy Hoàng,</HelloWrapper>
+          <HelloWrapper>Xin chào {user.fullname},</HelloWrapper>
           <QuestionWrapper>Bạn tìm kiếm sản phẩm gì hôm nay ?</QuestionWrapper>
         </StartArea>
         <SearchFake onPress={() => navigation.navigate('Search')} />
         <MainHome>
-          <CategoryList width={width} data={data} />
-          {/* <PreviewCategory width={width} /> */}
+          <CategoryList width={width} />
           <ProductWrapper>
             <ToolArea>
               <BestSellerWrapper>BEST SELLER</BestSellerWrapper>
@@ -70,7 +71,15 @@ function Home({ navigation, ...props }) {
                       key={index}
                       style={{ width: width * 0.42, marginLeft: width * (index % 2 ? 0.03 : 0.05), marginRight: width * (index % 2 ? 0.05 : 0.03), marginVertical: 8 }}
                     >
-                      <ProductImage style={{ width: width * 0.3, height: 100}} source={{ uri: item.image }} />
+                      <TouchableOpacity
+                        style={{ position: 'absolute', right: 5, top: 10 }}
+                        onPress={() => navigation.navigate("ProductDetail", {
+                          data: item
+                      })}
+                      >
+                        <MoreVerticalIcon />
+                      </TouchableOpacity>
+                      <ProductImage style={{ width: width * 0.3, height: 100 }} source={{ uri: item.image }} />
                       <ProductName>
                         {item.name}
                       </ProductName>

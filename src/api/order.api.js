@@ -2,7 +2,7 @@ import callApi from "./baseApi";
 
 export const getUserOrders = async () => {
   return callApi({
-    url: '/order',
+    url: '/order/get-my-order',
     method: 'get'
   })
 }

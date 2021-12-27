@@ -19,7 +19,7 @@ const Cart = ({ navigation }) => {
       sum += arr[i].price * arr[i].order;
     }
     return formatterVnd(sum);
-  }
+  };
 
   return (
     <SafeArea>

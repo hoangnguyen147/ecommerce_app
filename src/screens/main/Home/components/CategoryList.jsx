@@ -5,7 +5,7 @@ import { ButtonCat, CategoryListWrapper } from '../Home.styles';
 import PreviewCategory from './PreviewCategory';
 
 
-const CategoryList = ({ data, width, ...props }) => {
+const CategoryList = ({ width, ...props }) => {
   const [catActive, setCatActive] = useState(0);
   const categories = useSelector(state => state.category.data);
 

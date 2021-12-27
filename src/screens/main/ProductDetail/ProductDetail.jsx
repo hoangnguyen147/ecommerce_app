@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TouchableHighlight, Keyboard, TextInput } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TouchableHighlight, Keyboard, TextInput, Alert } from "react-native"
 import { StartArea, PriceWrapper } from "./ProductDetail.styles"
 import Header2 from "../../../components/Header/Header2"
 import SafeArea from "../../../components/utils/SafeArea"
@@ -11,6 +11,7 @@ import { useEffect } from "react"
 import { getComments } from "../../../api/comment.api"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../../redux/actions/cart"
+import { notifyMessage } from "../../../utils/notify"
 
 
 const ProductDetail = ({ route, navigation }) => {
@@ -77,7 +78,13 @@ const ProductDetail = ({ route, navigation }) => {
         </View>
       )
     }
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(data));
+    notifyMessage("Đã thêm sản phẩm vào giỏ hàng");
   }
+
   return (
     <SafeArea>
       <Header2 title="CHI TIẾT" navigation={navigation} />
@@ -124,7 +131,7 @@ const ProductDetail = ({ route, navigation }) => {
         {isKeyboardVisible ? (
           null
         ) : (
-          <TouchableHighlight style={styles.add_to_cart_wrapper} onPress={() => dispatch(addToCart(data))}>
+          <TouchableHighlight style={styles.add_to_cart_wrapper} onPress={() => handleAddToCart()}>
               <Text style={{ color: 'white' }}>THÊM VÀO GIỎ HÀNG</Text>
           </TouchableHighlight>
         )}
