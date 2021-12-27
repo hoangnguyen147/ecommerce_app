@@ -23,12 +23,9 @@ import { getProducts } from '../../../redux/actions/product';
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../../redux/actions/category';
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
 
 function Home({ navigation, ...props }) {
   const { width, height } = useWindowDimensions();
-  // const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState("");
 
   const dispatch = useDispatch();
@@ -36,10 +33,7 @@ function Home({ navigation, ...props }) {
   const products = useSelector(state => state.product.data);
 
 
-  useEffect(async () => {
-    /* const res = await testApi();
-    console.log(res, "res"); */
-    // getAllProduct();    
+  useEffect(async () => {   
     dispatch(getProducts());
     dispatch(getCategories());
   }, [])
@@ -105,7 +99,6 @@ function Home({ navigation, ...props }) {
 
         </MainHome>
       </ScrollView>
-      {/* <Button title="Đăng xuất" onPress={() => props.logout()} /> */}
 
     </SafeArea>
   );
@@ -125,8 +118,6 @@ const styles = StyleSheet.create({
   }
 
 })
-
-
 
 
 export default Home;
