@@ -13,19 +13,11 @@ import CartItem from './components/CartItem';
 const Cart = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
   const data = useSelector(state => state.cart.data);
-  console.log(data);
-
-
-
-  const sum = Object.values(data).length > 0 ? formatterVnd(Object.values(data).reduce((prev, cur) => {
-    if(cur == null) return prev.price + prev.order;
-    return prev.price * prev.order + cur.price * cur.order;
-  }, {order: 0, price: 0})) : "0 VND";
 
   const sumPrice = (data) => {
     let sum = 0;
     const arr = Object.values(data);
-    for(let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       sum += arr[i].price * arr[i].order;
     }
     return formatterVnd(sum);
@@ -50,9 +42,9 @@ const Cart = ({ navigation }) => {
         <CartFooter>
           <SumText>Tổng cộng: {sumPrice(data)}</SumText>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Checkout')}>
             <CheckoutButton>
-              Thanh toán
+              Mua hàng
             </CheckoutButton>
           </TouchableOpacity>
         </CartFooter>

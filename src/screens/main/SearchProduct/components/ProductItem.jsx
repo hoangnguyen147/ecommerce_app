@@ -17,7 +17,7 @@ const ProductItem = ({data, width, navigation, ...props}) => {
                 <VoteWrapper>
                     <StarWrapper>
                         <StarFilled />
-                        <Text style={{paddingLeft: 4}}>{data.vote}</Text>
+                        <Text style={{paddingLeft: 4}}>{data.vote.toFixed(2)}</Text>
                     </StarWrapper>
                     <TouchableOpacity onPress={() => navigation.navigate("ProductDetail", {
                         data: data

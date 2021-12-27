@@ -9,6 +9,7 @@ import Home from './Home/Home';
 import Profile from './Profile/Profile';
 import ProductDetail from './ProductDetail/ProductDetail';
 import SearchProduct from './SearchProduct/SearchProduct';
+import Checkout from './Cart/Checkout';
 
 const Main = createStackNavigator();
 
@@ -32,6 +33,10 @@ const screens = [
     {
         name: "Cart",
         component: Cart,
+    },
+    {
+        name: "Checkout",
+        component: Checkout,
     },
 ]
 

@@ -12,7 +12,7 @@ export const login = (data) => {
         try {
             // dispatch(setLoading(true));
             const res = await userLogin(data);
-            console.log(res);
+            console.log(res.data);
             
             dispatch(loginSuccess(res.data));
             // dispatch(setLoading(false));

@@ -124,11 +124,9 @@ const ProductDetail = ({ route, navigation }) => {
         {isKeyboardVisible ? (
           null
         ) : (
-          <View style={styles.add_to_cart_wrapper}>
-            <TouchableHighlight onPress={() => dispatch(addToCart(data))}>
+          <TouchableHighlight style={styles.add_to_cart_wrapper} onPress={() => dispatch(addToCart(data))}>
               <Text style={{ color: 'white' }}>THÊM VÀO GIỎ HÀNG</Text>
-            </TouchableHighlight>
-          </View>
+          </TouchableHighlight>
         )}
       </View>
     </SafeArea>

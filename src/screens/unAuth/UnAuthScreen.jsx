@@ -25,6 +25,7 @@ const screens = [
         options: {
             title: "Đăng ký",
             headerTitleAlign: 'center',
+            headerShown: false
         }
     },
 ]

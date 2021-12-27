@@ -54,5 +54,17 @@ export const CheckoutButton = styled(Text)`
     padding: 5px 8px;
 `
 
+export const CheckoutItemWrapper = styled(View)`
+    margin: 8px auto;
+    padding: 5px;
+    flex-direction: row;
+    align-items: center;
+`
+
+export const HorizontalLine = styled(View)`
+    border-bottom-color: #000;
+    border-bottom-width: 1px;
+`
+
 
 

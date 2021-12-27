@@ -53,109 +53,113 @@ function Signin({ navigation, ...props }) {
   };
   return (
     <SafeArea>
+      <KeyboardAwareScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
 
-      <ImageBackground source={require("./background.jpg")} style={styles.background}>
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: "bold",
-              paddingBottom: 10,
-              color: "#27ae60",
-            }}
-          >
-            Ecommerce App
-          </Text>
-          <Text style={{ fontSize: 16 }}>Gear is everything you need</Text>
-        </View>
-        <Image
-          style={{ height: 150, width: 150, marginTop:20, alignSelf: "center" }}
-          source={require("./logo.png")}
-        />
-        <KeyboardAwareScrollView>
-          <Formik
-            initialValues={{ username: "", password: "" }}
-            validationSchema={SignupSchema}
-            onSubmit={(values) => submit(values)}
-          >
-            {({
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              values,
-              errors,
-              touched,
-            }) => (
-              <View style={styles.form}>
-                <View style={styles.form_input}>
-                  <Text
-                    style={{
-                      paddingBottom: 10,
-                      color: "#27ae60",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Username
-                  </Text>
-                  <TextInput
-                    placeholder="username"
-                    style={styles.text_input}
-                    onChangeText={handleChange("username")}
-                    onBlur={handleBlur("username")}
-                    value={values.username}
-                  />
-                  {errors.username && touched.username ? (
-                    <Text style={{ color: "red" }}>{errors.username}</Text>
-                  ) : null}
-                </View>
-                <View style={styles.form_input}>
-                  <Text
-                    style={{
-                      paddingBottom: 10,
-                      color: "#27ae60",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Password
-                  </Text>
-                  <TextInput
-                    placeholder="password"
-                    style={styles.text_input}
-                    onChangeText={handleChange("password")}
-                    onBlur={handleBlur("password")}
-                    value={values.password}
-                    secureTextEntry={true}
-                  />
-                  {errors.password && touched.password ? (
-                    <Text style={{ color: "red" }}>{errors.password}</Text>
-                  ) : null}
-                </View>
-                <View style={styles.forgotpassword}>
-                  <TouchableOpacity>
-                    <Text style={styles.forgotpassword_text}>
-                      Forgot Password
+        <ImageBackground source={require("./background.jpg")} style={styles.background}>
+          <View style={styles.container}>
+            <View style={styles.title}>
+              <Text
+                style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  paddingBottom: 10,
+                  color: "#27ae60",
+                }}
+              >
+                Ecommerce App
+              </Text>
+              <Text style={{ fontSize: 16 }}>Gear is everything you need</Text>
+            </View>
+            <Image
+              style={{ height: 150, width: 150, marginTop: 20, alignSelf: "center" }}
+              source={require("./logo.png")}
+            />
+            <Formik
+              initialValues={{ username: "", password: "" }}
+              validationSchema={SignupSchema}
+              onSubmit={(values) => submit(values)}
+            >
+              {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                values,
+                errors,
+                touched,
+              }) => (
+                <View style={styles.form}>
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Username
                     </Text>
-                  </TouchableOpacity>
+                    <TextInput
+                      placeholder="username"
+                      style={styles.text_input}
+                      onChangeText={handleChange("username")}
+                      onBlur={handleBlur("username")}
+                      value={values.username}
+                    />
+                    {errors.username && touched.username ? (
+                      <Text style={{ color: "red" }}>{errors.username}</Text>
+                    ) : null}
+                  </View>
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Password
+                    </Text>
+                    <TextInput
+                      placeholder="password"
+                      style={styles.text_input}
+                      onChangeText={handleChange("password")}
+                      onBlur={handleBlur("password")}
+                      value={values.password}
+                      secureTextEntry={true}
+                    />
+                    {errors.password && touched.password ? (
+                      <Text style={{ color: "red" }}>{errors.password}</Text>
+                    ) : null}
+                  </View>
+                  <View style={styles.forgotpassword}>
+                    <TouchableOpacity>
+                      <Text style={styles.forgotpassword_text}>
+                        Forgot Password
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View>
+                    {/* <Button onPress={handleSubmit} title="Sign In" /> */}
+                    <Button onPress={() => handleSubmit()} title="Sign In" />
+                  </View>
+                  <View style={styles.footer}>
+                    <Text>Didn't have any account?</Text>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("SignUp")}
+                    >
+                      <Text style={{ color: "#27ae60" }}>Sign Up</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
-                <View>
-                  {/* <Button onPress={handleSubmit} title="Sign In" /> */}
-                  <Button onPress={() => handleSubmit()} title="Sign In" />
-                </View>
-                <View style={styles.footer}>
-                  <Text>Didn't have any account?</Text>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("SignUp")}
-                  >
-                    <Text style={{ color: "#27ae60" }}>Sign Up</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          </Formik>
-        </KeyboardAwareScrollView>
-        </View>
-      </ImageBackground>
+              )}
+            </Formik>
+          </View>
+        </ImageBackground>
+      </KeyboardAwareScrollView>
+
     </SafeArea>
   );
 }
@@ -198,6 +202,7 @@ const styles = StyleSheet.create({
     // flexDirection:'row',
     alignItems: "center",
     marginTop: 50,
+    marginBottom: 40
   },
 });
 

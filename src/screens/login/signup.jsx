@@ -27,34 +27,38 @@ const SignupSchema = Yup.object().shape({
 export default function Signup({ navigation }) {
   return (
     <SafeArea>
-      <ImageBackground
-        source={require("./background.jpg")}
-        style={styles.background}
+      <KeyboardAwareScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        style={{flex: 1}}
       >
-        <View style={styles.container}>
-          <View style={styles.title}>
-            <Text
+        <ImageBackground
+          source={require("./background.jpg")}
+          style={styles.background}
+        >
+          <View style={styles.container}>
+            <View style={styles.title}>
+              <Text
+                style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  paddingBottom: 10,
+                  color: "#27ae60",
+                }}
+              >
+                Ecommerce App
+              </Text>
+              <Text style={{ fontSize: 16 }}>Gear is everything you need</Text>
+            </View>
+            <Image
               style={{
-                fontSize: 30,
-                fontWeight: "bold",
-                paddingBottom: 10,
-                color: "#27ae60",
+                height: 150,
+                width: 150,
+                marginTop: 20,
+                alignSelf: "center",
               }}
-            >
-              Ecommerce App
-            </Text>
-            <Text style={{ fontSize: 16 }}>Gear is everything you need</Text>
-          </View>
-          <Image
-            style={{
-              height: 150,
-              width: 150,
-              marginTop: 20,
-              alignSelf: "center",
-            }}
-            source={require("./logo.png")}
-          />
-          <KeyboardAwareScrollView>
+              source={require("./logo.png")}
+            />
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={SignupSchema}
@@ -106,7 +110,7 @@ export default function Signup({ navigation }) {
                       onChangeText={handleChange("password")}
                       onBlur={handleBlur("password")}
                       value={values.password}
-                      // secureTextEntry='true'
+                    // secureTextEntry='true'
                     />
                     {errors.password && touched.password ? (
                       <Text style={{ color: "red" }}>{errors.password}</Text>
@@ -138,9 +142,10 @@ export default function Signup({ navigation }) {
                 </View>
               )}
             </Formik>
-          </KeyboardAwareScrollView>
-        </View>
-      </ImageBackground>
+          </View>
+        </ImageBackground>
+      </KeyboardAwareScrollView>
+
     </SafeArea>
   );
 }
@@ -183,5 +188,6 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: "center",
     marginTop: 20,
+    marginBottom: 40
   },
 });
