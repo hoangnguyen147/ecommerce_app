@@ -6,3 +6,11 @@ export const getUserOrders = async () => {
     method: 'get'
   })
 }
+
+export const postAddOrder = async (data) => {
+  return callApi({
+    url: '/order/add-order',
+    method: 'post',
+    data: data
+  })
+}

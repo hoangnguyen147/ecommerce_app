@@ -7,8 +7,6 @@ import { formatterVnd } from '../../../utils/formatNumber';
 import { CartFooter, CartItemWrapper, CheckoutButton, MainCart, SumText } from './Cart.styles';
 import CartItem from './components/CartItem';
 
-// const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
 
 const Cart = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
