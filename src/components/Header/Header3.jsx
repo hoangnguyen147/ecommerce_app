@@ -11,7 +11,7 @@ const Header3 = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <GoBackIcon />
             </TouchableOpacity>
-            <Text>PROFILE</Text>
+            <Text>Thông tin cá nhân</Text>
             <TextInput style={{opacity: 0, height: 0}} />
         </HeaderWrapper>
     )

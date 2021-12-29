@@ -10,6 +10,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TouchableOpacity,
+  useWindowDimensions,
 } from "react-native";
 import { fontSizes } from "../../theme/fonts";
 import { Formik } from "formik";
@@ -40,6 +41,8 @@ const SignupSchema = Yup.object().shape({
 });
 
 function Signin({ navigation, ...props }) {
+  const { width, height } = useWindowDimensions();
+
   const dispatch = useDispatch();
   const submit = (values) => {
     // values = {}
@@ -52,14 +55,13 @@ function Signin({ navigation, ...props }) {
     console.log(props);
   };
   return (
-    <SafeArea>
       <KeyboardAwareScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
 
         <ImageBackground source={require("./background.jpg")} style={styles.background}>
-          <View style={styles.container}>
+          <View style={{...styles.container, minHeight: height}}>
             <View style={styles.title}>
               <Text
                 style={{
@@ -99,10 +101,10 @@ function Signin({ navigation, ...props }) {
                         fontWeight: "bold",
                       }}
                     >
-                      Username
+                      Tên đăng nhập
                     </Text>
                     <TextInput
-                      placeholder="username"
+                      placeholder="Tên đăng nhập"
                       style={styles.text_input}
                       onChangeText={handleChange("username")}
                       onBlur={handleBlur("username")}
@@ -120,10 +122,10 @@ function Signin({ navigation, ...props }) {
                         fontWeight: "bold",
                       }}
                     >
-                      Password
+                      Mật khẩu
                     </Text>
                     <TextInput
-                      placeholder="password"
+                      placeholder="Mật khẩu"
                       style={styles.text_input}
                       onChangeText={handleChange("password")}
                       onBlur={handleBlur("password")}
@@ -137,20 +139,20 @@ function Signin({ navigation, ...props }) {
                   <View style={styles.forgotpassword}>
                     <TouchableOpacity>
                       <Text style={styles.forgotpassword_text}>
-                        Forgot Password
+                        Quên mật khẩu ?
                       </Text>
                     </TouchableOpacity>
                   </View>
                   <View>
                     {/* <Button onPress={handleSubmit} title="Sign In" /> */}
-                    <Button onPress={() => handleSubmit()} title="Sign In" />
+                    <Button onPress={() => handleSubmit()} title="Sign In" color="#27ae60" />
                   </View>
                   <View style={styles.footer}>
-                    <Text>Didn't have any account?</Text>
+                    <Text>Chưa có tài khoản ?</Text>
                     <TouchableOpacity
                       onPress={() => navigation.navigate("SignUp")}
                     >
-                      <Text style={{ color: "#27ae60" }}>Sign Up</Text>
+                      <Text style={{ color: "#27ae60" }}>Đăng ký</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -160,7 +162,6 @@ function Signin({ navigation, ...props }) {
         </ImageBackground>
       </KeyboardAwareScrollView>
 
-    </SafeArea>
   );
 }
 

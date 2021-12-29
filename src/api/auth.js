@@ -1,4 +1,3 @@
-import httpRequest from "../services/httpRequest";
 import callApi from "./baseApi";
 
 export const userLogin = async (data) => {
@@ -6,5 +5,12 @@ export const userLogin = async (data) => {
     url: "/auth/login",
     method: "post",
     data: data
+  })
+};
+
+export const getMe = async () => {
+  return callApi({
+    url: "/user/get-me",
+    method: "get",
   })
 }

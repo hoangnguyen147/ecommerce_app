@@ -5,7 +5,7 @@ import MenuVariant from '../../library/icons/MenuVariant'
 import Truck from '../../library/icons/Truck'
 import { AvarImage, HeaderWrapper, UserArea } from './Header.styles'
 
-const Header = ({ navigation }) => {
+const Header = ({ navigation, avatar }) => {
   return (
     <HeaderWrapper>
       <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
@@ -13,7 +13,7 @@ const Header = ({ navigation }) => {
       </TouchableOpacity>
       <TextInput style={{opacity: 0, height: 0}} />
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        <AvarImage source={require("../../../assets/images/avar.jpg")} />
+        <AvarImage source={{ uri: avatar || "https://hoangnguyen147.sgp1.digitaloceanspaces.com/images/doanky5/default2.png" }} />
       </TouchableOpacity>
       {/* <Text>LOGO</Text> */}
     </HeaderWrapper>

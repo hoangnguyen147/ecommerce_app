@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 export const MainProfile = styled(View)`
     padding-top: 5px;
+    flex: 1;
+    height: 360;
 `
 
 export const IntroArea = styled(View)`
@@ -38,4 +40,26 @@ export const EmailWrapper = styled(Text)`
 export const HorizontalLine = styled(View)`
     border-bottom-color: #ddd;
     border-bottom-width: 1px;
+`
+
+export const InfoTitle = styled(Text)`
+    font-family: ${(props) => props.theme.fonts.heading};
+    font-size: 15px;
+`
+
+export const InfoContent = styled(Text)`
+    color: #888;
+    font-family: ${(props) => props.theme.fonts.heading};
+    font-size: 14px;
+    font-style: italic;
+`
+
+export const InfoWrapper = styled(View)`
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20;
+    padding-bottom: 20;
+    padding-left: 20;
+    padding-right: 20;
+
 `

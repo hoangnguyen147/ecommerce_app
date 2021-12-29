@@ -20,7 +20,7 @@ const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props
                     <View style={styles.preview_name_rate}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.preview_name}>{item.fullname}</Text>
-                            <Text style={{ color: '#7f8c8d' }}>{"1 tháng trước"}</Text>
+                            <Text style={{ color: '#7f8c8d' }}>{"1 ngày trước"}</Text>
                         </View>
 
                         <Text >{item.content}</Text>
@@ -44,7 +44,7 @@ const ReviewProduct = ({ setIsModalRating, useComment, productId, data, ...props
                 renderItem={renderItem}
             />
             <TouchableOpacity style={styles.see_all}>
-                <Text style={{ color: '#7f8c8d' }}>See all review</Text>
+                <Text style={{ color: '#7f8c8d' }}>Xem tất cả</Text>
             </TouchableOpacity>
 
         </View>

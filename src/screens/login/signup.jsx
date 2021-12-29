@@ -10,14 +10,14 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from "react-native";
 import * as Yup from "yup";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import SafeArea from "../../components/utils/SafeArea";
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email")
+  username: Yup.string()
     .required("Trường này là bắt buộc!"),
   password: Yup.string()
     .min(2, "Quá ngắn!")
@@ -25,18 +25,19 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function Signup({ navigation }) {
+  const { width, height } = useWindowDimensions();
+
   return (
-    <SafeArea>
       <KeyboardAwareScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        style={{flex: 1}}
+        style={{ flex: 1 }}
       >
         <ImageBackground
           source={require("./background.jpg")}
           style={styles.background}
         >
-          <View style={styles.container}>
+          <View style={{ ...styles.container, minHeight: height }}>
             <View style={styles.title}>
               <Text
                 style={{
@@ -49,18 +50,28 @@ export default function Signup({ navigation }) {
                 Ecommerce App
               </Text>
               <Text style={{ fontSize: 16 }}>Gear is everything you need</Text>
+              <Image
+                style={{
+                  height: 150,
+                  width: 150,
+                  marginTop: 20,
+                  alignSelf: "center",
+                }}
+                source={require("./logo.png")}
+              />
             </View>
-            <Image
-              style={{
-                height: 150,
-                width: 150,
-                marginTop: 20,
-                alignSelf: "center",
-              }}
-              source={require("./logo.png")}
-            />
+
             <Formik
-              initialValues={{ email: "", password: "" }}
+              initialValues={{
+                username: "",
+                password: "",
+                rePassword: "",
+                fullname: "",
+                phone: "",
+                email: "",
+                address: "",
+                avatar: "",
+              }}
               validationSchema={SignupSchema}
               onSubmit={(values) => console.log(values)}
             >
@@ -81,17 +92,86 @@ export default function Signup({ navigation }) {
                         fontWeight: "bold",
                       }}
                     >
-                      Email
+                      Tên đăng nhập
                     </Text>
                     <TextInput
-                      placeholder="email"
+                      placeholder="Tên đăng nhập"
                       style={styles.text_input}
-                      onChangeText={handleChange("email")}
-                      onBlur={handleBlur("email")}
-                      value={values.email}
+                      onChangeText={handleChange("username")}
+                      onBlur={handleBlur("username")}
+                      value={values.username}
                     />
-                    {errors.email && touched.email ? (
-                      <Text style={{ color: "red" }}>{errors.email}</Text>
+                    {errors.username && touched.username ? (
+                      <Text style={{ color: "red" }}>{errors.username}</Text>
+                    ) : null}
+                  </View>
+
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Họ và Tên
+                    </Text>
+                    <TextInput
+                      placeholder="Nguyễn Văn A ..."
+                      style={styles.text_input}
+                      onChangeText={handleChange("fullname")}
+                      onBlur={handleBlur("fullname")}
+                      value={values.fullname}
+                    // secureTextEntry='true'
+                    />
+                    {errors.password && touched.password ? (
+                      <Text style={{ color: "red" }}>{errors.password}</Text>
+                    ) : null}
+                  </View>
+
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Số điện thoại
+                    </Text>
+                    <TextInput
+                      placeholder="Phone"
+                      style={styles.text_input}
+                      onChangeText={handleChange("phone")}
+                      onBlur={handleBlur("phone")}
+                      value={values.phone}
+                    // secureTextEntry='true'
+                    />
+                    {errors.password && touched.password ? (
+                      <Text style={{ color: "red" }}>{errors.password}</Text>
+                    ) : null}
+                  </View>
+
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Địa chỉ
+                    </Text>
+                    <TextInput
+                      placeholder="Địa chỉ"
+                      style={styles.text_input}
+                      onChangeText={handleChange("address")}
+                      onBlur={handleBlur("address")}
+                      value={values.address}
+                    // secureTextEntry='true'
+                    />
+                    {errors.password && touched.password ? (
+                      <Text style={{ color: "red" }}>{errors.password}</Text>
                     ) : null}
                   </View>
                   <View style={styles.form_input}>
@@ -102,10 +182,10 @@ export default function Signup({ navigation }) {
                         fontWeight: "bold",
                       }}
                     >
-                      Password
+                      Mật khẩu
                     </Text>
                     <TextInput
-                      placeholder="password"
+                      placeholder="Mật khẩu"
                       style={styles.text_input}
                       onChangeText={handleChange("password")}
                       onBlur={handleBlur("password")}
@@ -116,6 +196,29 @@ export default function Signup({ navigation }) {
                       <Text style={{ color: "red" }}>{errors.password}</Text>
                     ) : null}
                   </View>
+                  <View style={styles.form_input}>
+                    <Text
+                      style={{
+                        paddingBottom: 10,
+                        color: "#27ae60",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Nhập lại mật khẩu
+                    </Text>
+                    <TextInput
+                      placeholder="Nhập lại mật khẩu"
+                      style={styles.text_input}
+                      onChangeText={handleChange("rePassword")}
+                      onBlur={handleBlur("rePassword")}
+                      value={values.rePassword}
+                    // secureTextEntry='true'
+                    />
+                    {errors.password && touched.password ? (
+                      <Text style={{ color: "red" }}>{errors.password}</Text>
+                    ) : null}
+                  </View>
+
                   <View>
                     <Button onPress={handleSubmit} title="Sign Up" />
                   </View>
@@ -145,8 +248,6 @@ export default function Signup({ navigation }) {
           </View>
         </ImageBackground>
       </KeyboardAwareScrollView>
-
-    </SafeArea>
   );
 }
 const styles = StyleSheet.create({
@@ -159,10 +260,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    marginTop: 30,
+    marginTop: 50,
     alignItems: "center",
     flex: 1,
     maxHeight: 200,
+    marginBottom: 50
   },
   form: {},
   form_input: {

@@ -55,7 +55,7 @@ function Home({ navigation, ...props }) {
           <ProductWrapper>
             <ToolArea>
               <BestSellerWrapper>BEST SELLER</BestSellerWrapper>
-              <SeeAllWrapper>See All</SeeAllWrapper>
+              <SeeAllWrapper>Xem tất cả</SeeAllWrapper>
             </ToolArea>
 
             <View>

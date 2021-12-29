@@ -29,9 +29,9 @@ const AnotherProduct=()=>{
         <View style={styles.overview}>
             <View style={{flexDirection:'row',justifyContent:'space-between',flex:1,marginBottom:20}}>
                 <Text style={{fontSize:15,fontWeight:'bold'}}>
-                    Another Product
+                    Sản phẩm khác
                 </Text>
-                <Text style={{color:'#7f8c8d'}}>See all</Text>
+                <Text style={{color:'#7f8c8d'}}>Xem tất cả</Text>
             </View>
             <FlatList
                 data={data}
